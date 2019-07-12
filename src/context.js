@@ -4,7 +4,7 @@ import {storeProducts,detailProduct} from './data';
 const ProductContext = React.createContext();
 class ProductProvider extends Component {
     state={
-        products:storeProducts,
+        products:[],
         detailProduct:detailProduct,
         cart:[],
         modalOpen:false,
@@ -79,8 +79,8 @@ class ProductProvider extends Component {
         const selectedProducts = tempCart.find(item=>item.id === id)
         const index =tempCart.indexOf(selectedProducts);
         const product = tempCart[index];
-       
-        if(product.count === 0){
+        
+        if((product.count) == 0){
             this.removeItem(id);
         } 
         else{

@@ -9,7 +9,8 @@ export default class Navbar extends Component{
         return(
             <NavWrapper className="navbar navbar-expand-sm bg-primary navbar-dark px-sm-5">
                 <Link to="/" >
-                    <img src={logo} alt="store" className="navbar-brand" />
+                    {/* <img src={logo} alt="store" className="navbar-brand" /> */}
+                    <div className="fas fa-home navbar-brand"/>
                 </Link>
                 <ul className="navbar-nav align-items-center">
                     <li className="nav-item ml-5">
