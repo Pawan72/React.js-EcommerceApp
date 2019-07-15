@@ -80,19 +80,20 @@ class ProductProvider extends Component {
         const index =tempCart.indexOf(selectedProducts);
         const product = tempCart[index];
         
-        if((product.count) == 0){
-            this.removeItem(id);
+        if(product.count > 0){
+            product.count = product.count-1;
+            product.total = product.count * product.price;
+            
         } 
         else{
-            product.count=product.count-1;
-            product.total = product.count * product.price;
+            this.removeItem(id);
         } 
-        this.setState(()=>{
+        this.setState(() => {
             return{cart:[...tempCart]}
         },()=>{this.addTotal()})  
         
     }
-    removeItem =(id)=>{
+    removeItem = (id) => {
         let tempProduct = [...this.state.products];
         let tempCart = [...this.state.cart];
         tempCart = tempCart.filter(item=> item.id!==id);
@@ -121,7 +122,7 @@ class ProductProvider extends Component {
     addTotal =()=>{
         let cartSubTotal = 0;
         this.state.cart.map(item =>{
-            cartSubTotal+=item.total
+            return cartSubTotal+=item.total;
         })
         const tempTax = cartSubTotal * 0.1;
         const tax = parseFloat(tempTax.toFixed(2));
